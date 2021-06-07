@@ -75,7 +75,7 @@ class Level:
                 self.random_timer = pygame.time.get_ticks()
                 self.rand = setup.random
                 self.create_brick()
-            elif pygame.time.get_ticks() - self.random_timer > 1700 and self.rand > 4 / 3 and self.mark > 15:
+            elif pygame.time.get_ticks() - self.random_timer > 1700 and self.rand > 4 / 3 and self.mark > 1:
                 self.random_timer = pygame.time.get_ticks()
                 self.rand = setup.random
                 self.create_brick()
