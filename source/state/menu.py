@@ -41,7 +41,7 @@ class Menu:
         self.button_start = tools.get_image(setup.GRAPHICS['atlas'], 702, 234, 116, 70)
         self.button_start_size = self.button_start.get_size()
 
-        self.button_rank = tools.get_image(setup.GRAPHICS['atlas'], 822, 234, 116, 70)
+        self.button_rank = tools.get_image(setup.CHONG['rank'], 0, 0, 116, 60)
         self.button_rank_size = self.button_rank.get_size()
 
     def setup_bird(self):

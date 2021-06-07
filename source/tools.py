@@ -10,7 +10,7 @@ class Game:
         self.screen = pygame.display.get_surface()
         self.clock = pygame.time.Clock()
         self.keys = pygame.key.get_pressed()
-        self.mouse = pygame.mouse.get_pressed(3)
+        self.mouse = pygame.mouse.get_pressed(5)
         self.state_dict = state_dict
         self.state = self.state_dict[start_state]
 
@@ -25,7 +25,7 @@ class Game:
     def run(self):
         while True:
             from . import setup
-            setup.random = random.randint(0, 2)
+            setup.random = random.random() * 2
             for event in pygame.event.get(pygame.VIDEORESIZE):
                 C.SCREEN_W = event.size[0]
                 C.SCREEN_H = int(C.SCREEN_W * 512 / 288)
@@ -122,8 +122,8 @@ def creat_labels(label, font, colorkey=(0, 0, 0)):
     return label_image
 
 
-def get_rank():
-    rank = open("./resources/rank.txt", "r+")
+def get_rank(rankFile):
+    rank = open(rankFile, "r+")
     rank_str = rank.read()
     rank_list = rank_str.split('\n')
     for i in range(len(rank_list)):
@@ -131,8 +131,8 @@ def get_rank():
     return rank_list
 
 
-def update_rank(rank_list, mark):
-    rank = open("./resources/rank.txt", "r+")
+def update_rank(rank_list, mark, rankFile):
+    rank = open(rankFile, "r+")
     if mark > rank_list[9]:
         rank_list[9] = mark
         rank_list.sort(reverse=True)

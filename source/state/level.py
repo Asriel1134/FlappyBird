@@ -95,6 +95,9 @@ class Level:
     def update(self, surface, keys, mouse):
         if mouse[4]:
             self.mark += 1
+        if mouse[3]:
+            pygame.time.Clock().tick(45)
+
 
         self.game_ground.blit(self.background, self.viewport)
 
@@ -187,11 +190,11 @@ class Level:
         self.platinum = tools.get_image(setup.GRAPHICS['atlas'], 242, 516, 44, 44)
         self.game_over = tools.get_image(setup.GRAPHICS['atlas'], 784, 116, 204, 54)
         self.button_start = tools.get_image(setup.GRAPHICS['atlas'], 702, 234, 116, 70)
-        self.button_rank = tools.get_image(setup.GRAPHICS['atlas'], 822, 234, 116, 70)
+        self.button_rank = tools.get_image(setup.CHONG['rank'], 0, 0, 116, 60)
 
     def settle(self, mouse):
         if not self.save:
-            tools.update_rank(setup.rank_list, self.mark)
+            tools.update_rank(setup.rank_list, self.mark, "./resources/rank.txt")
             self.save = True
         if 9 < self.mark < 20:
             self.medal = self.copper

@@ -22,6 +22,7 @@ class Bird(pygame.sprite.Sprite):
         self.mouse_old = pygame.mouse.get_pressed(3)
         self.angel = 0
 
+
     def load_frames(self):
         self.bird_blue_up_frame = tools.get_image(setup.GRAPHICS['atlas'], 174, 982, 34, 24)
         self.bird_blue_mid_frame = tools.get_image(setup.GRAPHICS['atlas'], 230, 658, 34, 24)
@@ -41,7 +42,9 @@ class Bird(pygame.sprite.Sprite):
                                 self.bird_red_mid_frame]
         self.bird_yellow_frames = [self.bird_yellow_up_frame, self.bird_yellow_mid_frame, self.bird_yellow_down_frame,
                                    self.bird_yellow_mid_frame]
+        self.load_frames_continue()
 
+    def load_frames_continue(self):
         if setup.random < 2/3:
             self.bird_frames = self.bird_blue_frames
         elif setup.random > 4/3:
@@ -96,6 +99,7 @@ class Bird(pygame.sprite.Sprite):
                 self.image = pygame.transform.rotate(self.image, self.angel)
             if self.y > level.game_ground_h - level.ground_size[1] - self.image.get_size()[1] and not self.over:
                 self.over = True
+
 
         self.mouse_old = mouse
 
